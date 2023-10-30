@@ -1,0 +1,6 @@
+# ninja log v5
+2	296	7203190198356173	CMakeFiles/labwork_3.dir/main.cpp.obj	a90ae8118fa33a8e
+4	330	7203190198696205	CMakeFiles/labwork_3.dir/parser.cpp.obj	47e745dfb7a7639d
+0	56	7203559904270852	build.ninja	e4892e43624b85e5
+330	381	7203190199186204	labwork_3.exe	13103261c80e2ab0
+4	299	7203190198386234	CMakeFiles/labwork_3.dir/pile.cpp.obj	576ffd5dc817cdb
