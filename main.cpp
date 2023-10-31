@@ -9,7 +9,7 @@ int main(int argc, char ** argv) {
   Field.make_pile();
   set_Field(data_set1.in_filename, Field);
   Field.print_pile("old.txt");
-  Field.interation(67000);
+  Field.interation(600);
   Field.print_pile("new.txt");
   return 0;
 }

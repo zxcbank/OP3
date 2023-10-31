@@ -7,4 +7,5 @@ add_executable(labwork_3 main.cpp
         parser.cpp
         parser.h
         pile.cpp
-        pile.h)
+        pile.h
+)

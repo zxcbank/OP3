@@ -23,6 +23,3 @@ class point{
 
 };
 point* resize (point * array, int size);
-
-
-

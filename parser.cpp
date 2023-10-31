@@ -67,6 +67,3 @@ void set_Field(const std::string& filename, Pile& pile){
     }
   }
 }
-
-
-

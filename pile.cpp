@@ -7,16 +7,16 @@
 #include "pile.h"
 
 void Pile::make_pile() {
-    coords = new int16_t*[height];
-    for (int i = 0; i < height; i++){
-      coords[i] = new int16_t [width];
-      for (int j = 0; j < width; j++)
-        coords[i][j] = 0;
-    }
-    x0 = 0;
-    y0 = 0;
-    x1 = width;
-    y1 = height;
+  coords = new int16_t*[height];
+  for (int i = 0; i < height; i++){
+    coords[i] = new int16_t [width];
+    for (int j = 0; j < width; j++)
+      coords[i][j] = 0;
+  }
+  x0 = 0;
+  y0 = 0;
+  x1 = width;
+  y1 = height;
 }
 
 void Pile::extends_pile(int le, int ue, int re, int de){
@@ -89,19 +89,19 @@ void Pile::interation(int n){
           array[j].y = array[j].y + oldh/2;
         }
       }
-
+      std::cout << array[i].x << " " << array[i].y << "\n";
       coords[array[i].y][array[i].x] -= 4;
       coords[array[i].y][array[i].x-1]++;
       if (array[i].x-1 <= x0 && x0 != 0)
         x0--;
       coords[array[i].y][array[i].x+1]++;
-      if (array[i].x+1 >= x1-1)
+      if (array[i].x+1 >= x1-1 && x1 != width)
         x1++;
       coords[array[i].y-1][array[i].x]++;
       if (array[i].y-1 <= y0 && y0 != 0)
         y0--;
       coords[array[i].y+1][array[i].x]++;
-      if (array[i].y+1 >= y1-1)
+      if (array[i].y+1 >= y1-1 && y1 != height)
         y1++;
     }
   }
@@ -127,6 +127,8 @@ void Pile::print_pile(std::string filename) const{
   if (!file.is_open()){
     std::cerr << "no out file";
   } else {
+    std::cout << x0 << " " << x1 << " " << y0 << " " << y1 << "\n";
+//    std::cout << width << " " << height << "\n";
     for (int i = y0; i < y1; i++){
       for (int j = x0; j < x1; j++){
         if (coords[i][j] == 0)
@@ -144,4 +146,3 @@ void Pile::print_pile(std::string filename) const{
     }
   }
 }
-
