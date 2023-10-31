@@ -7,9 +7,9 @@ int main(int argc, char ** argv) {
   Pile Field;
   get_field_size(data_set1.in_filename, Field);
   Field.make_pile();
-  std::cout << " width:" << Field.width << "\n height:" << Field.height << "\n";
   set_Field(data_set1.in_filename, Field);
-  Field.print_pile(data_set1.out_filename);
-
+  Field.print_pile("old.txt");
+  Field.interation(67000);
+  Field.print_pile("new.txt");
   return 0;
 }

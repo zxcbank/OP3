@@ -25,8 +25,6 @@ void get_field_size(const std::string& filename, Pile& pile){
 
   std::ifstream in(filename);
   int ymax=-9999999, xmax=-9999999, ymin=999999, xmin=999999, tmpx, tmpy, val;
-  // окрываем файл для
-  // чтения
 
   if (!in.is_open())
   {
@@ -43,21 +41,20 @@ void get_field_size(const std::string& filename, Pile& pile){
       ymax = std::max(tmpy, ymax);
       xmin = std::min(tmpx, xmin);
       ymin = std::min(tmpy, ymin);
-//      std::cout << ++i << " " << tmpx << " " << tmpy << "\n";
     }
   }
 
-//  std::cout << xmax << "  " << ymax << "\n";
-//  std::cout << xmin << "  " << ymin << "\n";
 
   pile.width = 2 * std::max(abs(xmax), abs(xmin)) + 1;
   pile.height = 2 * std::max(abs(ymax), abs(ymin)) + 1;
+
+
   in.close();
 }
 
 void set_Field(const std::string& filename, Pile& pile){
   std::ifstream in(filename);
-  int tmpx, tmpy, val;
+  int tmpx, tmpy;
   if (in.is_open())
   {
     std::string line;
@@ -66,7 +63,6 @@ void set_Field(const std::string& filename, Pile& pile){
     {
       in >> tmpx;
       in >> tmpy;
-      std::cout << pile.height/2 - tmpy << " " << pile.width/2 + tmpx << "\n";
       in >> pile.coords[pile.height/2 - tmpy][pile.width/2 + tmpx];
     }
   }
