@@ -1,0 +1,3 @@
+C:/Users/Святослав/CLionProjects/labwork3-zxcbank/cmake-build-debug/CMakeFiles/labwork3_zxcbank.dir
+C:/Users/Святослав/CLionProjects/labwork3-zxcbank/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Святослав/CLionProjects/labwork3-zxcbank/cmake-build-debug/CMakeFiles/rebuild_cache.dir
