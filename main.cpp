@@ -1,15 +1,13 @@
-#include <iostream>
-#include "parser.h"
+#include "Parser.h"
 
 int main(int argc, char ** argv) {
-  parser data_set1;
-  get_data(argc, argv, data_set1);
-  Pile Field;
-  get_field_size(data_set1.in_filename, Field);
-  Field.make_pile();
-  set_Field(data_set1.in_filename, Field);
-  Field.print_pile("old.txt");
-  Field.interation(600);
-  Field.print_pile("new.txt");
+  Parser ParseObject;
+  Get_Data(argc, argv, ParseObject);
+  Pile CurrentPile;
+  Get_Field_Size(ParseObject.in_filename, CurrentPile);
+  CurrentPile.Make_Pile();
+  Set_Field(ParseObject.in_filename, CurrentPile);
+  CurrentPile.Iterate(ParseObject.max_iter, ParseObject.freq);
+
   return 0;
 }

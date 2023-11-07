@@ -4,9 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "parser.h"
+#include "Parser.h"
 
-void get_data (int argc, char **argv, parser& data_set){
+void Get_Data (int argc, char **argv, Parser& data_set){ // парсинг командной строки
   for (int i = 1; i < argc; i++) {
     std::string arg = argv[i];
     if (arg == "-m" || arg == "--max-iter"){
@@ -21,17 +21,17 @@ void get_data (int argc, char **argv, parser& data_set){
   }
 }
 
-void get_field_size(const std::string& filename, Pile& pile){
+void Get_Field_Size(const std::string& filename, Pile& pile){ // Инициализация пустого поля
 
   std::ifstream in(filename);
-  int ymax=-9999999, xmax=-9999999, ymin=999999, xmin=999999, tmpx, tmpy, val;
+  int16_t ymax=-32768, xmax=-32768, ymin=32767, xmin=32767, tmpx, tmpy;
+  uint64_t val;
 
   if (!in.is_open())
   {
-    std::cerr << "no in file \n";
+    std::cerr << "no input file found \n";
   } else {
     std::string line;
-    int i = 0;
     while (in)
     {
       in >> tmpx;
@@ -44,26 +44,39 @@ void get_field_size(const std::string& filename, Pile& pile){
     }
   }
 
+  pile.x0 = xmin;
+  pile.x1 = xmax;
+  pile.y0 = ymin;
+  pile.y1 = ymax;
 
-  pile.width = 2 * std::max(abs(xmax), abs(xmin)) + 1;
-  pile.height = 2 * std::max(abs(ymax), abs(ymin)) + 1;
+  pile.width = abs(xmax - xmin) + 1;
+  pile.height = abs(ymax - ymin ) + 1;
+  if (pile.width == 1){
 
-
-  in.close();
+    pile.width++;
+    pile.x1++;
+  }
+  if (pile.height == 1){
+    pile.height++;
+    pile.y1++;
+  }
 }
 
-void set_Field(const std::string& filename, Pile& pile){
+void Set_Field(const std::string& filename, Pile& pile){
   std::ifstream in(filename);
   int tmpx, tmpy;
   if (in.is_open())
   {
     std::string line;
-    int i = 0;
     while (in)
     {
       in >> tmpx;
       in >> tmpy;
-      in >> pile.coords[pile.height/2 - tmpy][pile.width/2 + tmpx];
+      in >> pile.coords[pile.y1 - tmpy][tmpx - pile.x0];
     }
+    pile.x0 = 0;
+    pile.x1 = pile.width - 1;
+    pile.y0 = 0;
+    pile.y1 = pile.height - 1;
   }
 }

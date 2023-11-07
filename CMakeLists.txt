@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.26)
-project(labwork_3)
+project(labwork3_zxcbank)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(labwork_3 main.cpp
-        parser.cpp
-        parser.h
-        pile.cpp
-        pile.h
-)
+add_executable(labwork3_zxcbank main.cpp
+        Parser.cpp
+        Parser.h
+        Pile.cpp
+        Pile.h
+        image.cpp
+        image.h)
